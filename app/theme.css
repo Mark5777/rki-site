@@ -1,0 +1,76 @@
+/* ===== Тема сайта РКИ: цвета, шрифты, тетрадная клетка ===== */
+
+@theme {
+  --color-paper: #fffbfc;     /* фон — бумага с розовым оттенком */
+  --color-ink: #b8336a;       /* ягодно-розовый — главный цвет */
+  --color-ink-deep: #6e1d43;  /* тёмная слива — подвал, наведение */
+  --color-ink-tint: #fceaf1;  /* нежно-розовый фон блоков */
+  --color-blush: #f7c9da;     /* насыщенный светло-розовый: стикеры, скотч */
+  --color-rule: #f4d3e0;      /* линии и рамки */
+  --color-pen: #2c44a8;       /* синяя ручка — рукописный русский текст */
+  --color-redpen: #d0312d;    /* красная ручка учителя — только пометки */
+  --color-graphite: #2a1f26;  /* основной текст */
+  --color-pencil: #6b5a63;    /* второстепенный текст */
+
+  --animate-marquee: marquee 45s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@theme inline {
+  --font-display: var(--ff-display);
+  --font-body: var(--ff-body);
+  --font-hand: var(--ff-hand);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Отступ сверху при переходе по меню, чтобы шапка не закрывала заголовок */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Тетрадь в клетку (розовые линии) */
+.notebook-grid {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(#f6d9e5 1px, transparent 1px),
+    linear-gradient(90deg, #f6d9e5 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Полоска декоративного скотча (washi tape) */
+.washi {
+  position: absolute;
+  height: 30px;
+  width: 120px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(232 110 158 / 0.55) 0 7px,
+    rgb(247 201 218 / 0.7) 7px 14px
+  );
+  box-shadow: 0 1px 2px rgb(110 29 67 / 0.12);
+}
+
+/* Бегущая строка останавливается при наведении */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Уважение к людям, у которых в системе отключена анимация */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+}
