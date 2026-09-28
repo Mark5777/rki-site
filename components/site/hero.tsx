@@ -86,11 +86,16 @@ export function Hero() {
             {h.subtitle}
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#plans" className={btnPrimary}>
-              {h.primaryCta}
+            <a
+              href={h.primaryCta.href}
+              target={h.primaryCta.external ? "_blank" : undefined}
+              rel={h.primaryCta.external ? "noopener noreferrer" : undefined}
+              className={btnPrimary}
+            >
+              {h.primaryCta.label}
             </a>
-            <a href="#programme" className={btnOutline}>
-              {h.secondaryCta}
+            <a href={h.secondaryCta.href} className={btnOutline}>
+              {h.secondaryCta.label}
             </a>
           </div>
 
@@ -100,7 +105,15 @@ export function Hero() {
             <span className="font-hand text-2xl text-ink">{extra.heroDoodle}</span>
           </div>
 
-          <p className="mt-8 text-sm text-pencil">{h.note}</p>
+          {/* Заметка про бесплатную методичку */}
+          <a
+            href={h.secondaryCta.href}
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink-tint px-4 py-2 text-sm text-ink transition-colors hover:bg-blush/60"
+          >
+            📘 {h.freeGuideNote}
+          </a>
+
+          <p className="mt-6 text-sm text-pencil">{h.note}</p>
         </div>
 
         <NotebookPage />

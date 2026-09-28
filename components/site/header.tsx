@@ -7,6 +7,7 @@ import { btnPrimary, container } from "@/lib/ui";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const cta = site.hero.primaryCta;
 
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur">
@@ -26,8 +27,13 @@ export function Header() {
               {item.label}
             </a>
           ))}
-          <a href="#plans" className={`${btnPrimary} px-5! py-2.5! text-sm!`}>
-            {site.hero.primaryCta}
+          <a
+            href={cta.href}
+            target={cta.external ? "_blank" : undefined}
+            rel={cta.external ? "noopener noreferrer" : undefined}
+            className={`${btnPrimary} px-5! py-2.5! text-sm!`}
+          >
+            {cta.label}
           </a>
         </nav>
 
@@ -58,11 +64,13 @@ export function Header() {
               </a>
             ))}
             <a
-              href="#plans"
+              href={cta.href}
+              target={cta.external ? "_blank" : undefined}
+              rel={cta.external ? "noopener noreferrer" : undefined}
               onClick={() => setOpen(false)}
               className={`${btnPrimary} mt-3`}
             >
-              {site.hero.primaryCta}
+              {cta.label}
             </a>
           </div>
         </nav>

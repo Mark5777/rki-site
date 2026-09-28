@@ -1,12 +1,11 @@
 import { site } from "@/lib/content";
 import { extra } from "@/lib/content-extra";
-import { container } from "@/lib/ui";
+import { btnLight, btnOutline, container } from "@/lib/ui";
 
 export function FinalCta() {
   const f = site.final;
   return (
     <section className="relative overflow-hidden bg-ink py-20 text-white md:py-28">
-      {/* Большие полупрозрачные буквы на фоне */}
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -left-6 -top-10 select-none font-display text-[16rem] font-semibold leading-none text-white/[0.07]"
@@ -32,18 +31,23 @@ export function FinalCta() {
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          {site.plans.items.map((p) => (
-            <a
-              key={p.name}
-              href="#plans"
-              className="rounded-full bg-white px-6 py-3 font-medium text-graphite transition-colors hover:bg-ink-tint focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            >
-              <span className="text-ink">{p.price}</span> {p.name}
-            </a>
-          ))}
+          <a
+            href={site.hero.primaryCta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={btnLight}
+          >
+            {site.hero.primaryCta.label}
+          </a>
+          <a
+            href={site.hero.secondaryCta.href}
+            className={`${btnOutline} border-white/40! text-white! hover:bg-white/10!`}
+          >
+            {site.hero.secondaryCta.label}
+          </a>
         </div>
 
-        <p className="mt-10 font-hand text-2xl text-white/90">{f.note}</p>
+        <p className="mt-10 text-sm text-white/70">{f.note}</p>
       </div>
     </section>
   );

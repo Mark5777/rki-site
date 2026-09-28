@@ -37,7 +37,6 @@ export function About() {
             </figcaption>
           </figure>
 
-          {/* Стикер с фактом */}
           <p className="absolute -bottom-10 -right-4 w-44 rotate-6 bg-blush p-4 font-hand text-xl leading-snug text-ink-deep shadow-[0_12px_24px_-12px_rgba(110,29,67,0.5)] sm:-right-10">
             {extra.aboutSticky}
           </p>
